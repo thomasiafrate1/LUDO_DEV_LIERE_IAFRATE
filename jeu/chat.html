@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat en Temps Réel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .logoimg{
+            width: 50px;
+            
+        }
+        .navbar {
+          background-color: #333;
+          overflow: hidden;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 20px;
+          position: fixed;
+          width: 98vw;
+      }
+      .navbar a {
+          color: #fff;
+          text-decoration: none;
+          padding: 14px 20px;
+          display: block;
+      }
+      .navbar a:hover {
+          background-color: #575757;
+      }
+      .navbar .logo {
+          font-size: 24px;
+          font-weight: bold;
+          padding: 5px;
+      }
+      .logoimg{
+            width: 50px;
+        }
+      .navbar .right {
+          display: flex;
+          align-items: center;
+          
+          justify-content: space-between;
+      }
+
+      .droite{
+        display: flex;
+        align-items: center;
+        margin-left: 380px;
+      }
+      .navbar .right a {
+          display: flex;
+          align-items: center;
+      }
+      .navbar .right img {
+          border-radius: 50%;
+          width: 32px;
+          height: 32px;
+          margin-left: 10px;
+      }
+      .container {
+          padding: 20px;
+          text-align: center;
+      }
+        .chat-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            margin: 20px;
+        }
+        .messages {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: #fff;
+            overflow-y: scroll;
+        }
+        .message {
+            margin: 10px 0;
+        }
+        .message span {
+            font-weight: bold;
+        }
+        .input-container {
+            display: flex;
+            margin-top: 10px;
+        }
+        .input-container input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        .input-container button {
+            padding: 10px;
+            border: none;
+            background-color: #5cb85c;
+            color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 40vh;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px;
+        }
+        .footer-section h4, .footer-section h3 {
+            margin-bottom: 10px;
+        }
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-section ul li {
+            margin: 0 10px;
+        }
+        .footer-section ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div>
+          <a href="#" class="logo"><img src="img/logo.png" alt="" class="logoimg"></a>
+        </div>
+        <div class="right">
+            <a href="description.html">Description du jeu</a>
+            <a href="chat.html">Chat général</a>
+            <a href="jeu.php">Le Jeu</a>
+            <div class="droite">
+              <a href="profil.php">Profil <img src="img/3135715.png" alt="Profil"></a>
+              <a href="index.php"><img src="img/53494.png" alt=""></a>
+            </div>
+        </div>
+    </div>
+<div class="chat-container">
+    <div class="messages" id="messages"></div>
+    <div class="input-container">
+        <input type="text" id="messageInput" placeholder="Tapez votre message...">
+        <button onclick="sendMessage()">Envoyer</button>
+    </div>
+</div>
+
+
+<script>
+    function fetchMessages() {
+        fetch('get_messages.php')
+            .then(response => response.json())
+            .then(data => {
+                const messagesContainer = document.getElementById('messages');
+                messagesContainer.innerHTML = '';
+                data.forEach(message => {
+                    const messageElement = document.createElement('div');
+                    messageElement.classList.add('message');
+                    messageElement.innerHTML = `<span>${message.username}:</span> ${message.message} <small>${message.timestamp}</small>`;
+                    messagesContainer.appendChild(messageElement);
+                });
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            })
+            .catch(error => console.error('Error fetching messages:', error));
+    }
+
+    function sendMessage() {
+        const messageInput = document.getElementById('messageInput');
+        const message = messageInput.value;
+
+        if (message.trim() === '') return;
+
+        fetch('post_message.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `message=${encodeURIComponent(message)}`
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                messageInput.value = '';
+                fetchMessages();
+            } else {
+                alert(data.message);
+            }
+        })
+        .catch(error => console.error('Error sending message:', error));
+    }
+
+    // Rafraîchir les messages toutes les 2 secondes
+    setInterval(fetchMessages, 2000);
+    fetchMessages(); // Récupérer les messages au chargement de la page
+</script>
+
+</body>
+</html>
