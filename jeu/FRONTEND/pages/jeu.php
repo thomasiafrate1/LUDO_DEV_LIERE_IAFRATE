@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
+    header("Location: ../../BACKEND/php/login.php");
     exit();
 }
 $username = $_SESSION['username'];
@@ -12,14 +12,14 @@ $username = $_SESSION['username'];
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | Ludo</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
-    <script src="Build/UnityLoader.js"></script> <!-- Chemin vers UnityLoader.js de votre build -->
+    <link rel="shortcut icon" href="../../BACKEND/TemplateData/favicon.ico">
+    <link rel="stylesheet" href="../../BACKEND/TemplateData/style.css">
+    <script src="../../BACKEND/Build/UnityLoader.js"></script> <!-- Chemin vers UnityLoader.js de votre build -->
 </head>
 <body>
 <div class="navbar">
         <div>
-            <a href="#" class="logo"><img src="img/logo.png" alt="" class="logoimg"></a>
+            <a href="#" class="logo"><img src="../img/logo.png" alt="" class="logoimg"></a>
         </div>
         <div class="right">
             <a href="description.html">Description</a>
@@ -27,8 +27,8 @@ $username = $_SESSION['username'];
             <a href="jeu.php">Le Jeu</a>
             <a href="classement.php">Classement</a>
             <div class="droite">
-                <a href="profil.php">Profil <img src="img/3135715.png" alt="Profil"></a>
-                <a href="index.php"><img src="img/53494.png" alt=""></a>
+                <a href="profil.php">Profil <img src="../img/3135715.png" alt="Profil"></a>
+                <a href="../index.php"><img src="../img/53494.png" alt=""></a>
             </div>
         </div>
         <div class="menu-toggle">
@@ -57,7 +57,7 @@ $username = $_SESSION['username'];
     <style>
          @font-face {
             font-family: 'JungleFont';
-            src: url('Junter-0vWjo.otf') format('opentype');
+            src: url('../font/Junter-0vWjo.otf') format('opentype');
         }
         body {
     font-family: JungleFont, sans-serif;
@@ -224,7 +224,7 @@ $username = $_SESSION['username'];
             updateBannerVisibility();
         }
 
-        var buildUrl = "Build";
+        var buildUrl = "../../BACKEND/Build";
         var loaderUrl = buildUrl + "/46.loader.js";
         var config = {
             //Nouveau dossier (22)

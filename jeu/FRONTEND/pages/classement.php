@@ -7,7 +7,7 @@
     <style>
          @font-face {
             font-family: 'JungleFont';
-            src: url('Junter-0vWjo.otf') format('opentype');
+            src: url('../font/Junter-0vWjo.otf') format('opentype');
         }
         body {
     font-family: JungleFont, sans-serif;
@@ -132,7 +132,7 @@
 <body>
 <div class="navbar">
         <div>
-            <a href="#" class="logo"><img src="img/logo.png" alt="" class="logoimg"></a>
+            <a href="#" class="logo"><img src="../img/logo.png" alt="" class="logoimg"></a>
         </div>
         <div class="right">
             <a href="description.html">Description</a>
@@ -140,8 +140,8 @@
             <a href="jeu.php">Le Jeu</a>
             <a href="classement.php">Classement</a>
             <div class="droite">
-                <a href="profil.php">Profil <img src="img/3135715.png" alt="Profil"></a>
-                <a href="index.php"><img src="img/53494.png" alt=""></a>
+                <a href="profil.php">Profil <img src="../img/3135715.png" alt="Profil"></a>
+                <a href="../index.php"><img src="../img/53494.png" alt=""></a>
             </div>
         </div>
         <div class="menu-toggle">
@@ -154,7 +154,7 @@
     <h1>Classement des Joueurs</h1>
 
     <?php
-    include 'config.php';
+    include '../../BACKEND/php/config.php';
     $sql = "SELECT username, partie_gagne FROM users ORDER BY partie_gagne DESC";
     $result = $conn->query($sql);
 

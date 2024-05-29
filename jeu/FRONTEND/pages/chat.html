@@ -7,7 +7,7 @@
     <style>
         @font-face {
             font-family: 'JungleFont';
-            src: url('Junter-0vWjo.otf') format('opentype');
+            src: url('../font/Junter-0vWjo.otf') format('opentype');
         }
         body {
     font-family: JungleFont, sans-serif;
@@ -191,7 +191,7 @@
 <body>
     <div class="navbar">
         <div>
-            <a href="#" class="logo"><img src="img/logo.png" alt="" class="logoimg"></a>
+            <a href="#" class="logo"><img src="../img/logo.png" alt="" class="logoimg"></a>
         </div>
         <div class="right">
             <a href="description.html">Description</a>
@@ -199,8 +199,8 @@
             <a href="jeu.php">Le Jeu</a>
             <a href="classement.php">Classement</a>
             <div class="droite">
-                <a href="profil.php">Profil <img src="img/3135715.png" alt="Profil"></a>
-                <a href="index.php"><img src="img/53494.png" alt=""></a>
+                <a href="profil.php">Profil <img src="../img/3135715.png" alt="Profil"></a>
+                <a href="../index.php"><img src="../img/53494.png" alt=""></a>
             </div>
         </div>
         <div class="menu-toggle">
@@ -220,7 +220,7 @@
 
 <script>
     function fetchMessages() {
-        fetch('get_messages.php')
+        fetch('../../BACKEND/php/get_messages.php')
             .then(response => response.json())
             .then(data => {
                 const messagesContainer = document.getElementById('messages');
@@ -242,7 +242,7 @@
 
         if (message.trim() === '') return;
 
-        fetch('post_message.php', {
+        fetch('../../BACKEND/php/post_message.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'

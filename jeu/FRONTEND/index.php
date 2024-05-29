@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'config.php';
+include '../BACKEND/php/config.php';
 
 $message = "";
 
@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $user = $result->fetch_assoc();
             if (password_verify($password, $user['password'])) {
                 $_SESSION['username'] = $user['username'];
-                header("Location: jeu.php");
+                header("Location: pages/jeu.php");
                 exit();
             } else {
                 $message = "Mot de passe incorrect.";
@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <style>
         @font-face {
             font-family: 'JungleFont';
-            src: url('Junter-0vWjo.otf') format('opentype');
+            src: url('font/Junter-0vWjo.otf') format('opentype');
         }
         body {
             font-family: JungleFont, sans-serif;
