@@ -82,12 +82,12 @@ $username = $_SESSION['username'];
         }
 
         var buildUrl = "../../BACKEND/Build";
-        var loaderUrl = buildUrl + "/46.loader.js";
+        var loaderUrl = buildUrl + "/47.loader.js";
         var config = {
             //Nouveau dossier (22)
-            dataUrl: buildUrl + "/46.data",
-            frameworkUrl: buildUrl + "/46.framework.js",
-            codeUrl: buildUrl + "/46.wasm",
+            dataUrl: buildUrl + "/47.data",
+            frameworkUrl: buildUrl + "/47.framework.js",
+            codeUrl: buildUrl + "/47.wasm",
             streamingAssetsUrl: "StreamingAssets",
             companyName: "DefaultCompany",
             productName: "Ludo",
