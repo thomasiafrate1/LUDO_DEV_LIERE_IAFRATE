@@ -1,0 +1,95 @@
+@font-face {
+    font-family: 'JungleFont';
+    src: url('font/Junter-0vWjo.otf') format('opentype');
+}
+body {
+    font-family: JungleFont, sans-serif;
+    background: linear-gradient(to bottom left, #000000, #393736);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.container {
+    background-color: #fff;
+    display: flex;
+    box-shadow: 0 0 400px rgba(0, 0, 0, 0.1);
+    width: 800px;
+    max-width: 90%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.image-section {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-right: 70px;
+    margin-left: 20px;
+    background: url('img/login.png') no-repeat center center/cover;
+    width: 70%;
+}
+
+.image-section-register {
+    
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 00px;
+    margin-left: 20px;
+    background-size: cover;
+    width: 100%;
+}
+.image-section {
+    background: url('../img/login.png') no-repeat center center/cover;
+}
+.image-section-register {
+    background: url('../img/register.jpg') no-repeat center center/cover;
+    display: none;
+}
+.form-section {
+    padding: 40px;
+    width: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+h2 {
+    margin-bottom: 20px;
+}
+input[type="text"], input[type="password"], input[type="email"] {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+button {
+    background-color: #473ed1;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #3b32b3;
+}
+.toggle-btn {
+    background-color: #fff;
+    color: #473ed1;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.toggle-btn:hover {
+    background-color: transparent;
+    color: #473ed1;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.message {
+    color: red;
+    margin-bottom: 15px;
+}
