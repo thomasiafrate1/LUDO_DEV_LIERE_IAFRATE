@@ -17,18 +17,24 @@ $username = $_SESSION['username'];
     <script src="Build/UnityLoader.js"></script> <!-- Chemin vers UnityLoader.js de votre build -->
 </head>
 <body>
-    <div class="navbar">
+<div class="navbar">
         <div>
             <a href="#" class="logo"><img src="img/logo.png" alt="" class="logoimg"></a>
         </div>
         <div class="right">
-            <a href="description.html">Description du jeu</a>
+            <a href="description.html">Description</a>
             <a href="chat.html">Chat général</a>
             <a href="jeu.php">Le Jeu</a>
+            <a href="classement.php">Classement</a>
             <div class="droite">
                 <a href="profil.php">Profil <img src="img/3135715.png" alt="Profil"></a>
                 <a href="index.php"><img src="img/53494.png" alt=""></a>
             </div>
+        </div>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </div>
 
@@ -49,63 +55,103 @@ $username = $_SESSION['username'];
     </div>
 
     <style>
+         @font-face {
+            font-family: 'JungleFont';
+            src: url('Junter-0vWjo.otf') format('opentype');
+        }
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-        }
-        #unity-container {
-            z-index: -1;
-        }
-        .navbar {
-            background-color: #333;
-            overflow: hidden;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-            margin-top: -100vh;
-            position: fixed;
-            width: 98vw;
-            z-index: 1;
-        }
-        .navbar a {
-            color: #fff;
-            text-decoration: none;
-            padding: 14px 20px;
-            display: block;
-        }
-        .navbar a:hover {
-            background-color: #575757;
-        }
-        .navbar .logo {
-            font-size: 24px;
-            font-weight: bold;
-            padding: 5px;
-        }
-        .logoimg {
-            width: 50px;
-        }
-        .navbar .right {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .droite {
-            display: flex;
-            align-items: center;
-            margin-left: 380px;
-        }
-        .navbar .right a {
-            display: flex;
-            align-items: center;
-        }
-        .navbar .right img {
-            border-radius: 50%;
-            width: 32px;
-            height: 32px;
-            margin-left: 10px;
-        }
+    font-family: JungleFont, sans-serif;
+    margin: 0;
+    background: linear-gradient(to bottom left, #f7f7f7, #f7f7f7);
+    background-size: cover;
+}
+.navbar {
+    background-color: #ffffff;
+    margin-top: -100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+}
+.navbar a {
+    color: #000000;
+    text-decoration: none;
+    padding: 14px 20px;
+    display: block;
+}
+.navbar a:hover {
+    text-decoration: underline;
+}
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 5px;
+}
+.logoimg {
+    width: 50px;
+}
+.navbar .right {
+    display: flex;
+    align-items: center;
+}
+.droite {
+    display: flex;
+    align-items: center;
+    margin-left: 20vw;
+}
+.navbar .right a {
+    display: flex;
+    align-items: center;
+}
+.navbar .right img {
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    margin-left: 10px;
+}
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+.menu-toggle span {
+    background: #000;
+    display: block;
+    height: 2px;
+    margin: 4px 0;
+    width: 25px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .navbar .right {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+    .navbar .right a {
+        width: 100%;
+        padding: 10px 20px;
+    }
+    .droite {
+        flex-direction: column;
+        margin-left: 0;
+    }
+    .menu-toggle {
+        display: flex;
+    }
+    .navbar .right.show {
+        display: flex;
+    }
+}
         .container {
             padding: 20px;
             text-align: center;
@@ -179,12 +225,12 @@ $username = $_SESSION['username'];
         }
 
         var buildUrl = "Build";
-        var loaderUrl = buildUrl + "/43.loader.js";
+        var loaderUrl = buildUrl + "/46.loader.js";
         var config = {
             //Nouveau dossier (22)
-            dataUrl: buildUrl + "/43.data",
-            frameworkUrl: buildUrl + "/43.framework.js",
-            codeUrl: buildUrl + "/43.wasm",
+            dataUrl: buildUrl + "/46.data",
+            frameworkUrl: buildUrl + "/46.framework.js",
+            codeUrl: buildUrl + "/46.wasm",
             streamingAssetsUrl: "StreamingAssets",
             companyName: "DefaultCompany",
             productName: "Ludo",
