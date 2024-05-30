@@ -2,7 +2,7 @@
 
 ## Présentation du projet
 
-Bienvenue dans notre projet LUDO, développé par Tom Liere et Thomas Iafrate dans le cadre de notre cursus à Ynov B2 Informatique. Nous avons choisi de créer un jeu de ludo interactif, combinant notre passion pour le développement de jeux et nos compétences en programmation web. Ce projet représente le fruit de notre collaboration et de notre enthousiasme pour le développement informatique.
+Bienvenue dans notre projet LUDO, développé par Tom Liere et Thomas Iafrate dans le cadre de notre cursus à Ynov B2 Informatique. Nous avons choisi de créer un jeu de ludo interactif, combinant notre passion pour ce jeu et nos compétences en programmation web. Ce projet représente le fruit de notre collaboration et de notre enthousiasme pour le développement informatique.
 
 ## Explication
 
